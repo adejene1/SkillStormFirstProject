@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <title>Home Page</title>
+</head>
+<body>
+    <section id="title">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="" id="brand-name">ASD Inventory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+            
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Company Branch
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="#" onclick="javascript:addEast()">East Side</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="javascript:addWest()">West Side</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="javascript:addNorth()">North Side</a></li>
+                    </ul>
+                  </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="javascript: addWarehouse()">Add warehouses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="javascript: addItem()">Add Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="javascript: rmvItem()">Delete Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="javascript: displayItem()">Display Items</a>
+                </li>
+            </ul>
+        </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>ASD Invintory.<br> Store and Distribute items.</h1>
+                    <p>A platform that stored items and distribute to users in short period of time. Use our service and guarante you will be fully satisfied</p>
+                    
+                    <button type="button" class="btn btn-dark btn-lg" onclick="addItem()">Add Items</button> 
+                    <button type="button" class="btn btn-outline-primary btn-lg" onclick="displayItem()">Display Items</button>
+                </div>
+                    
+                <div class="col-lg-6 img-col">
+                    <img src="../img/sectruck.jpg" alt="Truck Img" id="img-1">
+                </div>
+            </div>
+        </div>
+    
+</section>
+
+<section class="body-part">
+    <div class="row">
+        <div class="ft-box col-lg-4">
+            <i class="fas fa-tags fa-5x"></i>
+            <h3>Different Items</h3>
+            <p class="ft-p">There are diffrent items in our warehouse</p>
+        </div>
+        <div class="ft-box col-lg-4">
+            <i class="fas fa-warehouse fa-5x"></i>
+            <h3>Store Perfectly</h3>
+            <p class="ft-p">Will be stored in perfect condition</p>
+        </div>
+        <div class="ft-box col-lg-4">
+            <i class="fas fa-truck fa-5x"></i>
+            <h3>Distribute The Items</h3>
+            <p class="ft-p">Distribute fast and eaisly</p>
+        </div>
+    </div>
+
+
+
+    <!--Add A Forms-->
+    
+    <div class="popup" id="add-warehouse">
+        <form  method="post" action="/addWarehouse" class="form-container">
+          <h2>Add warehouses</h2>
+
+          <div>
+           <label> Warehouse ID:</label> 
+             <input type="number" name="wID" class="input-form" required>
+        </div>
+        <div>
+            <label>Warehouse name:</label>
+            <input type="text" name="warehouseName" class="input-form" required>
+        </div>
+
+        <div>
+            <label>Warehouse Capacity:</label>
+            <input type="number" name="warehouseCapacity" class="input-form" required>
+        </div>
+        <div>
+            <label>Company Branch:</label><br>
+            <input type="radio" id="east-side" name="branch"  value="EastSide">
+            <label for="east-side">East Side</label><br>
+            <input type="radio" id="west-side" name="branch"  value="WestSide">
+            <label for="west-side">West Side</label><br>
+            <input type="radio" id="north-side" name="branch"  value="NorthSide">
+            <label for="north-side">North Side</label><br>
+
+        </div>
+            
+
+          <input type="submit" value="Submit" class="btn">
+          <button type="button" class="btn cancel" onclick="closeAddWarehouse()">Close</button>
+        </form>
+      </div>
+
+      <div class="popup" id="add-item">
+        <form method="post" action="/additem" class="form-container">
+          <h2>Add Items</h2>
+
+          <div>
+            <label>Item type: </label>
+            <input list="items" name="itemType" class="input-form" required>
+            <datalist id="items">
+                <option value="Food" />
+                <option value="Electronics" />
+                <option value="Clothe" />
+                <option value="House_need" />
+                <option value="Other" />
+            </datalist>
+        </div>
+        <div> <label>Item name:</label> <input type="text" name="itemName" class="input-form" required></div>
+        <div> <label>Quantity:</label> <input type="number" name="itemQ" class="input-form" required></div>
+        <div><label>Warehouse ID:</label><input type="number" name="itemWID" class="input-form" required></div>
+       <div> <label>Warehouse name:</label> <input type="text" name="itemWName" class="input-form" required></div>
+    
+      
+          <input type="submit" value="Submit" class="btn">
+          <button type="button" class="btn cancel" onclick="closeaddItem()">Close</button>
+        </form>
+      </div>
+
+      <div class="popup" id="rmv-item">
+        <form method="post" action="/delItems" class="form-container">
+          <h2>Remove Items</h2>
+            
+          <div>
+                 <label>Warehouse ID: </label>
+                 <input type="number" name="idW" class="input-form" required/>
+            </div>
+            <div>
+                <label>Item to remove:</label>
+                 <input type="text" name="itmRm" class="input-form" required/>
+            </div>
+            <div>
+                <label>Amount:</label>
+                <input type="number" name="amtRm" class="input-form" required/>
+            </div>
+
+      
+          <input type="submit" value="Submit" class="btn">
+          <button type="button" class="btn cancel" onclick="closeRmvItem()">Close</button>
+        </form>
+      </div>
+    <!--Add A from-->
+
+    <div class="popup" id="display-item">
+        <h2>Item and Warehouse lists</h2>
+        <div id="see-item">
+
+        </div>
+
+
+        <button type="submit" onclick="closeItem()">Close</button>
+    </div>
+
+    <div class="popup branch-item" id="east-branch">
+        <h2> East Side Branch</h2>
+        <div id="east-item">
+
+        </div>
+        <button type="submit" onclick="closeEast()">Close</button>
+    </div>
+    <div class="popup branch-item" id="west-branch">
+        <h2>West Side Branch</h2>
+        <div id="west-item">
+
+        </div>
+        <button type="submit" onclick="closeWest()">Close</button>
+    </div>
+    <div class="popup branch-item" id="north-branch">
+        <h2>North Side Branch</h2>
+        <div id="north-item">
+
+        </div>
+        <button type="submit" onclick="closeNorth()">Close</button>
+    </div>
+
+</section>
+
+    <script src="../script/script.js"></script>
+</body>
+</html>
